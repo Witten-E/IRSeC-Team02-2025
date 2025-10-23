@@ -20,6 +20,14 @@ while IFS=':' read -r username pass; do
     if printf "%s\n" "${user_list[@]}" | grep -q -x -F -- "$username"; then
         echo "'$username' is approved."
         #add change password section here
+        read -s -p "Enter new password for '$username': " new_pass
+        echo
+        echo "${username}:${new_pass}" | chpasswd
+        if [ $? -eq 0 ]; then
+            echo "Password for user ${username} changed successfully."
+        else
+            echo "Failed to change password for user ${username}."
+        fi
     else
         # Remove the user and their home directory
         # --remove-home option for deluser removes the home directory
