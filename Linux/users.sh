@@ -11,7 +11,8 @@ INPUT_FILE="/etc/passwd"
 user_list=("fathertime" "chronos" "aion" "kairos" "merlin" "terminator" "mrpeabody" "jamescole" "docbrown" "professorparadox" "drwho" "martymcFly" "arthurdent" "sambeckett" "loki" "riphunter" "theflash" "tonystark" "drstrange" "bartallen")
 
 # Read the input file line by line
-while IFS=':' read -r username; do
+while IFS=':' read -r username pass; do
+    echo "~~~~~"
     # Trim any leading/trailing whitespace
     username=$(echo "$username" | tr -d '[:space:]')
 
@@ -26,9 +27,9 @@ while IFS=':' read -r username; do
         sudo deluser --remove-home "$username"
         
         if [ $? -eq 0 ]; then
-            echo "User $username and their home directory successfully removed."
+            echo "User '$username' and their home directory successfully removed."
         else
-            echo "Error removing user $username."
+            echo "Error removing user '$username'."
         fi
     fi
 done < /etc/passwd
