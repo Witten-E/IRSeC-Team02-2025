@@ -8,7 +8,7 @@ fi
 
 INPUT_FILE="/etc/passwd"
 
-user_list=("user1" "user2")
+user_list=("fathertime" "chronos" "aion" "kairos" "merlin" "terminator" "mrpeabody" "jamescole" "docbrown" "professorparadox" "drwho" "martymcFly" "arthurdent" "sambeckett" "loki" "riphunter" "theflash" "tonystark" "drstrange" "bartallen")
 
 # Read the input file line by line
 while IFS=':' read -r username; do
