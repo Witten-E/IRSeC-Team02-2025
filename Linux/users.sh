@@ -40,12 +40,19 @@ while IFS=':' read -r username pass; do
         # Remove the user and their home directory
         # --remove-home option for deluser removes the home directory
         # -r option for userdel also removes the home directory
-        sudo deluser --remove-home "$username"
-        
-        if [ $? -eq 0 ]; then
-            echo "User '$username' and their home directory successfully removed."
+        read -p "Delete user[y/n]: '$username'?: " confirm
+        if [ $confirm -eq y ]; then
+            sudo deluser --remove-home "$username"
+            if [ $? -eq 0 ]; then
+                echo "User '$username' and their home directory successfully removed."
+            else
+                echo "Error removing user '$username'."
+            fi
         else
-            echo "Error removing user '$username'."
+            echo "did not delete ${username}."
         fi
+        
+        
+
     fi
 done < /etc/passwd
