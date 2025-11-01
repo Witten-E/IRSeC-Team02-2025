@@ -20,7 +20,15 @@ while IFS=':' read -r username pass; do
     if printf "%s\n" "${user_list[@]}" | grep -q -x -F -- "$username"; then
         echo "'$username' is approved."
         #add change password section here
+        if [$username -eq "whiteteam"]; then
+            echo "skipping white team"
+            continue
+        fi
         read -s -p "Enter new password for '$username': " new_pass
+        if [$new_pass -eq ""]; then
+            echo "skipping"
+            continue
+        fi
         echo
         echo "${username}:${new_pass}" | chpasswd
         if [ $? -eq 0 ]; then
