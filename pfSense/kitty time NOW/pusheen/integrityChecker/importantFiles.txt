@@ -1,0 +1,12 @@
+/cf/conf/config.xml
+/etc/passwd
+/etc/group
+/etc/master.passwd
+/etc/rc.conf
+/etc/hosts
+/etc/resolv.conf
+/boot/loader.conf
+/usr/local/etc/php.ini
+/usr/local/etc/lighttpd/lighttpd.conf
+/usr/local/etc/rc.d/
+/root/filePathsList.txt
